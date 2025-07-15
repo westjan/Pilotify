@@ -12,10 +12,7 @@ const LeftSidebar = () => {
               <LayoutDashboard className="mr-3" size={20} />
               Dashboard
             </li>
-            <li className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
-              <ShoppingCart className="mr-3" size={20} />
-              Marketplace
-            </li>
+            
             <li className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
               <ListTodo className="mr-3" size={20} />
               Tasks
@@ -31,10 +28,7 @@ const LeftSidebar = () => {
           </ul>
         </nav>
       </div>
-      <div className="p-4 border-t flex items-center hover:bg-gray-100 cursor-pointer">
-        <UserCircle className="mr-3" size={24} />
-        <span className="font-medium">John Doe</span>
-      </div>
+      
     </div>
   );
 };
