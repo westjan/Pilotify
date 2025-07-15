@@ -1,7 +1,23 @@
+
 ## Review
 
-- Installed `lucide-react` for iconography.
-- Refactored `LeftSidebar.tsx` to include icons for navigation items and a user profile section at the bottom.
-- Refactored `TopNavbar.tsx` to align navigation items to the right and added a search bar.
-- Refactored `page.tsx` to improve the main content area's visual appeal with example cards and recent activities.
-- Updated `tailwind.config.ts` to enable dark mode.
+### Phase 1: Authentication and User Management
+- Prisma and SQLite set up.
+- User and Role models defined and database schema updated.
+- NextAuth.js integrated with Credentials provider.
+- Sign-up, Login, and Logout pages implemented.
+- Role-Based Access Control (RBAC) implemented with helper functions and protected API routes/UI components.
+
+### Phase 2: Pilot Project Management
+- Pilot Project model defined and database schema updated.
+- API Endpoints for Pilot Project CRUD operations created with authentication and authorization.
+- Form for adding new Pilot Projects developed.
+- Pages for listing and viewing Pilot Projects implemented.
+- Edit and Delete functionality for Pilot Projects implemented (restricted to participants).
+
+### Phase 3: Innovation/Product Management (Marketplace)
+- Innovation/Product model defined and database schema updated.
+- API Endpoints for Innovation/Product CRUD operations created with authentication and authorization.
+- Form for adding new Innovations/Products developed.
+- Pages for listing and viewing Innovations/Products (Marketplace) implemented.
+- Edit and Delete functionality for Innovations/Products implemented (restricted to owners).
