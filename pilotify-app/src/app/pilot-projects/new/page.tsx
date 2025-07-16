@@ -4,12 +4,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { Role } from '@/generated/prisma';
+import UserSearchSelect from '@/components/UserSearchSelect';
 
 export default function NewPilotProject() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [corporateId, setCorporateId] = useState('');
+  const [corporateName, setCorporateName] = useState('');
   const [innovatorId, setInnovatorId] = useState('');
+  const [innovatorName, setInnovatorName] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const router = useRouter();
@@ -25,23 +28,32 @@ export default function NewPilotProject() {
       return;
     }
 
-    // Automatically set corporateId or innovatorId based on user role
-    let finalCorporateId = corporateId;
-    let finalInnovatorId = innovatorId;
+    let currentCorporateId = corporateId;
+    let currentInnovatorId = innovatorId;
 
+    // Determine final corporateId and innovatorId based on user role and selections
     if (session.user.role === Role.CORPORATE) {
-      finalCorporateId = session.user.id;
-    } else if (session.user.role === Role.INNOVATOR) {
-      finalInnovatorId = session.user.id;
-    }
-
-    // If the user is an admin, they can set both, so we use the state values.
-    // Otherwise, ensure the user is part of the project they are creating.
-    if (session.user.role !== Role.ADMIN) {
-      if (session.user.id !== finalCorporateId && session.user.id !== finalInnovatorId) {
-        setError('You can only create projects where you are either the corporate or the innovator.');
+      currentCorporateId = session.user.id;
+      if (!currentInnovatorId) {
+        setError('Please select an Innovator.');
         return;
       }
+    } else if (session.user.role === Role.INNOVATOR) {
+      currentInnovatorId = session.user.id;
+      if (!currentCorporateId) {
+        setError('Please select a Corporate.');
+        return;
+      }
+    } else if (session.user.role === Role.ADMIN) {
+      if (!currentCorporateId || !currentInnovatorId) {
+        setError('Please select both Corporate and Innovator.');
+        return;
+      }
+    }
+
+    if (!title) {
+      setError('Please fill in the project title.');
+      return;
     }
 
     const response = await fetch('/api/pilot-projects', {
@@ -49,7 +61,12 @@ export default function NewPilotProject() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ title, description, corporateId: finalCorporateId, innovatorId: finalInnovatorId }),
+      body: JSON.stringify({
+        title,
+        description,
+        corporateId: currentCorporateId,
+        innovatorId: currentInnovatorId,
+      }),
     });
 
     if (response.ok) {
@@ -95,33 +112,54 @@ export default function NewPilotProject() {
           </div>
           {session?.user?.role === Role.ADMIN ? (
             <>
-              <div className="mb-4">
-                <label htmlFor="corporateId" className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Corporate User ID:</label>
-                <input
-                  type="text"
-                  id="corporateId"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600"
-                  value={corporateId}
-                  onChange={(e) => setCorporateId(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="mb-6">
-                <label htmlFor="innovatorId" className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Innovator User ID:</label>
-                <input
-                  type="text"
-                  id="innovatorId"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600"
-                  value={innovatorId}
-                  onChange={(e) => setInnovatorId(e.target.value)}
-                  required
-                />
-              </div>
+              <UserSearchSelect
+                label="Corporate:"
+                roleFilter="CORPORATE"
+                onSelect={(id, name) => {
+                  setCorporateId(id);
+                  setCorporateName(name);
+                }}
+                selectedUserId={corporateId}
+                selectedUserName={corporateName}
+              />
+              <UserSearchSelect
+                label="Innovator:"
+                roleFilter="INNOVATOR"
+                onSelect={(id, name) => {
+                  setInnovatorId(id);
+                  setInnovatorName(name);
+                }}
+                selectedUserId={innovatorId}
+                selectedUserName={innovatorName}
+              />
             </>
           ) : (
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-              Your user ID ({session?.user?.id}) will be automatically assigned as the {session?.user?.role === Role.CORPORATE ? 'corporate' : 'innovator'} for this project.
-            </p>
+            <>
+              {session?.user?.role === Role.CORPORATE && (
+                <UserSearchSelect
+                  label="Select Innovator:"
+                  roleFilter="INNOVATOR"
+                  onSelect={(id, name) => {
+                    setInnovatorId(id);
+                    setInnovatorName(name);
+                  }}
+                  selectedUserId={innovatorId}
+                  selectedUserName={innovatorName}
+                />
+              )}
+              {session?.user?.role === Role.INNOVATOR && (
+                <UserSearchSelect
+                  label="Select Corporate:"
+                  roleFilter="CORPORATE"
+                  onSelect={(id, name) => {
+                    setCorporateId(id);
+                    setCorporateName(name);
+                  }}
+                  selectedUserId={corporateId}
+                  selectedUserName={corporateName}
+                />
+              )}
+            </>
           )}
           <div className="flex items-center justify-between">
             <button
