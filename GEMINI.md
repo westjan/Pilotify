@@ -1,5 +1,3 @@
-# GEMINI.md
-
 ## 🧠 Project Overview
 
 **Pilotify** is a B2B web application that streamlines collaboration between corporate entities and innovative startups during the pilot phase of new projects.
@@ -14,55 +12,111 @@ Pilotify ensures that pilot projects are structured and aligned with internal do
 One of the standout features is a categorized **marketplace**, where startups can publish harmonized pilot offers. These offers are commercially standardized, enabling corporates to easily browse and compare across different solution categories.
 
 ### Key Features:
-- 🧭 **Pilot Structuring** – Define and communicate pilot goals and expectations early.
-- 🔄 **Ongoing Support** – Enable smooth follow-ups and collaboration during the pilot.
-- 🛍️ **Marketplace** – Allow startups to publish and corporates to browse offers in a harmonized format.
-- 📊 **Review & Outcome Evaluation** – Capture, assess, and standardize learnings at the end of pilots.
+
+*   🧭 **Pilot Structuring** – Define and communicate pilot goals and expectations early.
+*   🔄 **Ongoing Support** – Enable smooth follow-ups and collaboration during the pilot.
+*   🛍️ **Marketplace** – Allow startups to publish and corporates to browse offers in a harmonized format.
+*   📊 **Review & Outcome Evaluation** – Capture, assess, and standardize learnings at the end of pilots.
 
 🎯 **Goal**: To make the pilot process more efficient, engaging, and successful for both startups and corporates by providing structure, clarity, and a dynamic discovery engine.
 
-
 ## Code Editing Instructions for Gemini CLI
 
-You are a careful, methodical assistant working in a real-world codebase where simplicity and traceability matter.
+You are a precise, controlled assistant working in a production codebase. Any changes must be approved before execution.
 
-### Step-by-Step Workflow:
+### 1. Understand Before Acting
 
-1. **Understand First**  
-   - Read through the relevant parts of the codebase to understand the problem before proposing or making any changes.
+*   **Read First:** Open and review relevant files and context. Do not alter any code before thorough reading.
+*   **Identify Scope:** Note affected modules, dependencies, and potential side effects.
 
-2. **Plan Before Code**  
-   - Draft a clear plan and write it to `tasks/todo.md`.
-   - The plan should include:
-     - A checklist of discrete, atomic TODO items.
-     - Each task should be as minimal and isolated as possible.
+### 2. Plan and Record
 
-3. **Check-in Before Starting**  
-   - Do **not** start making changes until the plan has been confirmed by me.
-   - Wait for approval before proceeding.
+*   **Draft Plan:** Write a detailed plan in `tasks/todo.md` with:
+    *   A clear list of discrete, atomic tasks.
+    *   Estimated impact and dependencies for each task.
+*   **Max Tasks:** Limit each plan to no more than 10 tasks per iteration to avoid drift.
+*   **Approval Checkpoint:** Stop. Output the plan and await explicit user confirmation before proceeding.
 
-4. **Implement with Simplicity**  
-   - After approval, begin working through the TODO list one item at a time.
-   - Mark each completed item in `tasks/todo.md`.
-   - Keep changes as small and focused as possible.
-   - Avoid large-scale or complex refactors.
+### 3. Execute in Approved Batches
 
-5. **Communicate Clearly**  
-   - For each completed task, write a brief, high-level summary of what was changed and why.
-   - Output this in the CLI, not just in `todo.md`.
+*   **Batch Execution:** Once you receive approval for the plan in `tasks/todo.md`, implement all approved tasks in sequence without pausing for each one.
+*   **Focused Commits:** For each task, make a small, focused commit:
+    *   **Commit Message Prefix:** Use one of the following emojis: `👍` (like), `❤️` (love), `🎉` (celebrate), `💡` (idea/lamp), `🤔` (thinking face).
+    *   **Body:** Reference the corresponding `tasks/todo.md` entry and a one-line reason.
+*   **Progress Updates:** After finishing each task, check it off in `tasks/todo.md` and print a brief CLI summary: “Completed: <task_description> — ”.
+*   **Batch Completion Prompt:** At the end of the batch, prompt the user: "All approved tasks complete. Review changes and approve next batch plan? (yes/no)"
 
-6. **Review and Wrap-up**  
-   - At the end, append a `## Review` section to `tasks/todo.md`:
-     - Summarize all completed changes.
-     - Mention any follow-up considerations or questions.
-     - Note any deviations from the original plan and why.
+### 4. Communication and Logs
+
+*   **CLI Summaries:** For each batch run, output a one-line summary per task and a final summary of the batch.
+*   **Detailed Notes:** Keep detailed explanations under each task in `tasks/todo.md` as needed.
+
+### 5. Final Review
+
+*   **Wrap-up Section:** Add a `## Review` section at the end of `tasks/todo.md`:
+    *   List all completed tasks with statuses.
+    *   Note any deviations and why.
+    *   Identify follow-up questions or items.
+
+*   **Security Validation:** In the same `## Review`, include:
+    *   A checklist verifying security best practices have been followed (e.g., input validation, no hard-coded secrets, proper error handling).
+    *   Confirmation that no sensitive information (credentials, API keys, PII) is exposed in code or logs.
+    *   A brief review for common vulnerabilities (e.g., SQL injection, XSS, insecure dependencies).
+
+*   **Deliver Artifacts:** Present updated files and diff summaries in the CLI.---
 
 ### Style Guide
-- Prefer clear and readable code over clever solutions.
-- Name variables descriptively.
-- Follow conventions already used in the project.
-- Use inline comments only when necessary for understanding context.
 
----
+*   **Readability First:** Favor straightforward code over clever shortcuts.
+*   **Naming:** Use descriptive, consistent names aligned with existing conventions.
+*   **Comments:** Only add inline comments to clarify non-obvious logic.
+*   **Refactors:** Avoid bulk refactors; if needed, break into separate, approved tasks.
 
-💡 Reminder: every change must be justified by its simplicity and minimal risk of introducing bugs.
+### Safety and Control Measures
+
+*   **No Autonomous Task Generation:** Do not add or propose tasks beyond the approved `tasks/todo.md` list.
+*   **Scope Change Procedure:** If new work emerges, note it in a new draft plan and restart the approval process.
+*   **Task Drift Prevention:** Enforce a hard pause after each task for user sign-off.
+
+### 6. Documentation Practices
+
+*   **Change Logs:** Maintain a `CHANGELOG.md` at the repo root:
+    *   Record every batch or version update with date, list of tasks completed, and semantic version tag if applicable.
+    *   Follow the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) convention: sections for Added, Changed, Fixed, and Security.
+
+*   **Key Feature Descriptions:** Update `README.md` or project wiki:
+    *   Summarize high-level features and usage examples after each major batch.
+    *   Link to relevant modules and `tasks/todo.md` for detailed context.
+
+*   **API and Component Docs:** For public interfaces or components:
+    *   Keep inline API docblocks (e.g., JSDoc or Sphinx) up-to-date alongside code changes.
+    *   As part of each approved batch, add a documentation task for any new or altered interface.
+
+*   **Documentation Tasks:** Include doc updates in the initial plan:
+    *   Treat docs the same as code: add discrete tasks in `tasks/todo.md` for updating or writing new docs.
+    *   Ensure each batch plan includes at least one documentation-related task when features or interfaces change.
+
+*   **Review Documentation:** In the Final Review:
+    *   Verify that `CHANGELOG.md`, `README.md`, and inline docs reflect all code changes.
+    *   Confirm no outdated or broken links, and that examples still work as intended.
+
+### 7. Tech Stack Overview
+
+*   **Central Tech Stack Doc:** Maintain a `TECH_STACK.md` (or section in `README`) outlining:
+    *   Core languages, frameworks, and libraries (e.g., React, Node.js, PostgreSQL).
+    *   Version requirements and upgrade policies.
+    *   Tooling (e.g., ESLint, Prettier, Docker) and environment setup steps.
+
+*   **Integration with Plan:** For each batch plan, include a task to:
+    *   Review and update `TECH_STACK.md` if new tools or versions are introduced.
+    *   Ensure any new dependency is documented with rationale and usage examples.
+
+*   **Onboarding Aid:** Reference `TECH_STACK.md` in developer onboarding materials so new contributors can:
+    *   Quickly set up local environments.
+    *   Understand why each tool or version is chosen.
+
+*   **Review Tech Stack:** In the Final Review:
+    *   Confirm that `TECH_STACK.md` reflects all new or updated dependencies.
+    *   Check for outdated or deprecated tools.
+
+This instruction set ensures a disciplined, transparent workflow where every change is planned, reviewed, and approved before execution.

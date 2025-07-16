@@ -1,5 +1,0 @@
-feat: Integrate bookmarking into marketplace page (UI changes)
-
-- Removed 'Bookmarked Offers' link from LeftSidebar.
-- Added 'Show Bookmarked Only' filter to marketplace page.
-- Implemented sorting functionality (by creation date, price, title) for offers on the marketplace page.
