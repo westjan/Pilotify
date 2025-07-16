@@ -28,6 +28,7 @@ You are a precise, controlled assistant working in a production codebase. Any ch
 
 *   **Read First:** Open and review relevant files and context. Do not alter any code before thorough reading.
 *   **Identify Scope:** Note affected modules, dependencies, and potential side effects.
+*   **Key Project Documents:** Always consult `project_overview.md` for a high-level understanding of the application's features and architecture, and `DESIGN_GUIDE.md` for UI/UX principles, component specifications, and styling guidelines.
 
 ### 2. Plan and Record
 
@@ -96,8 +97,12 @@ You are a precise, controlled assistant working in a production codebase. Any ch
     *   Treat docs the same as code: add discrete tasks in `tasks/todo.md` for updating or writing new docs.
     *   Ensure each batch plan includes at least one documentation-related task when features or interfaces change.
 
+*   **Rabbit Holes Documentation:** Maintain a `RABBITHOLES.md` at the repo root:
+    *   Document significant issues that led to reverts or extensive debugging, including symptoms, attempted solutions, suspected root causes, and lessons learned.
+    *   Review this document before starting new features or major refactoring to avoid repeating past mistakes.
+
 *   **Review Documentation:** In the Final Review:
-    *   Verify that `CHANGELOG.md`, `README.md`, and inline docs reflect all code changes.
+    *   Verify that `CHANGELOG.md`, `README.md`, `RABBITHOLES.md`, and inline docs reflect all code changes.
     *   Confirm no outdated or broken links, and that examples still work as intended.
 
 ### 7. Tech Stack Overview
@@ -108,7 +113,7 @@ You are a precise, controlled assistant working in a production codebase. Any ch
     *   Tooling (e.g., ESLint, Prettier, Docker) and environment setup steps.
 
 *   **Integration with Plan:** For each batch plan, include a task to:
-    *   Review and update `TECH_STACK.md` if new tools or versions are introduced.
+    *   Review and update `TECH_STACK.md`, `DESIGN_GUIDE.md`, and `project_overview.md` if new tools or versions are introduced or if architectural/design decisions are impacted.
     *   Ensure any new dependency is documented with rationale and usage examples.
 
 *   **Onboarding Aid:** Reference `TECH_STACK.md` in developer onboarding materials so new contributors can:

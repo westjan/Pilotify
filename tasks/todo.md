@@ -1,37 +1,35 @@
-## User Profile and Navigation Updates
+## Revert to Latest GitHub Version
 
-This plan addresses the missing user profile page and the missing "Tasks" link in the left sidebar navigation.
+This plan outlines the steps to revert the local repository to the latest version available on the remote GitHub repository, discarding all local changes.
 
 ### TODO List:
 
-- [x] **Task 1: Create `profile/page.tsx`.**
-    - Description: Create a new page at `src/app/profile/page.tsx` to serve as a placeholder for the user profile.
-    - Impact: Adds the user profile page.
-    - Dependencies: None.
+- [x] **Task 1: Fetch latest changes from remote.**
+    - Description: Execute `git fetch origin master` to retrieve the latest state of the remote `master` branch without merging.
+    - Impact: Updates the local knowledge of the remote repository.
+    - Dependencies: Git.
 
-- [x] **Task 2: Update `TopNavbar.tsx` to Link to Profile.**
-    - Description: Modify the `TopNavbar.tsx` component to make the user avatar a link to the `/profile` page.
-    - Impact: Enables navigation to the user profile page.
-    - Dependencies: Task 1.
+- [x] **Task 2: Reset local repository to remote master.**
+    - Description: Execute `git reset --hard origin/master` to discard all local changes and move the `HEAD` to match the remote `origin/master`.
+    - Impact: All local modifications will be lost, and the repository will be in the same state as the remote `master`.
+    - Dependencies: Git, Task 1.
 
-- [x] **Task 3: Update `LeftSidebar.tsx` to Include Tasks Link.**
-    - Description: Modify the `LeftSidebar.tsx` component to add a "Tasks" link to the navigation, pointing to `/pilot-projects/tasks`.
-    - Impact: Adds the "Tasks" link to the left sidebar.
-    - Dependencies: None.
+- [x] **Task 3: Clean untracked files and directories.**
+    - Description: Execute `git clean -fd` to remove any untracked files and directories from the working tree.
+    - Impact: Ensures a completely clean working directory, removing any files not part of the committed history.
+    - Dependencies: Git.
 
-- [x] **Task 4: Build and Verify.**
-    - Description: Run `npm run build` to ensure the application compiles without errors and visually inspect the changes.
-    - Impact: Verifies the successful implementation of all changes.
-    - Dependencies: All previous tasks.
+- [x] **Task 4: Verify repository status.**
+    - Description: Execute `git status` to confirm that the repository is clean and matches the remote `master` branch.
+    - Impact: Confirms the success of the revert operation.
+    - Dependencies: Git.
 
-## Review
+### Review
 
 ### Code Implementation and Security Review (2025-07-16)
 
-*   **Summary:** Created a placeholder user profile page and linked the user avatar in the top navigation to it. Added a "Tasks" link to the left sidebar navigation.
+*   **Summary:** Successfully reverted the local repository to the latest version from `origin/master`, discarding all local changes and untracked files.
 *   **Security Best Practices:**
-    *   No hard-coded secrets, API keys, or sensitive information were added.
-    *   No personally identifiable information (PII) is handled by these components.
-    *   Input validation is not applicable at this stage as the components use placeholder data.
-*   **Vulnerability Review:** No common vulnerabilities (e.g., SQL injection, XSS) were introduced. The changes are primarily to navigation and placeholder pages and do not introduce any new security risks.
-*   **Confirmation:** The implemented changes are secure and do not introduce any known vulnerabilities.
+    *   This operation is a revert and does not introduce new code or configurations. It restores the repository to a previously committed state.
+*   **Vulnerability Review:** No new vulnerabilities were introduced as a result of this revert. The repository is now in a known good state (as per the remote).
+*   **Confirmation:** The revert operation was successful, and the repository is clean.
