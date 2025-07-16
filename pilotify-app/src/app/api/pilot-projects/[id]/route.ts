@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@/generated/prisma';
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 
 const prisma = new PrismaClient();
 
@@ -19,6 +19,16 @@ export async function GET(request: Request, { params }: { params: { id: string }
       include: {
         corporate: true,
         innovator: true,
+        comments: {
+          include: {
+            user: { select: { id: true, name: true, profilePictureUrl: true } },
+            reactions: {
+              include: { user: { select: { id: true, name: true, profilePictureUrl: true } } },
+            },
+          },
+          orderBy: { createdAt: 'asc' },
+        },
+        bookmarks: true,
       },
     });
 
