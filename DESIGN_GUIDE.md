@@ -17,23 +17,23 @@ Pilotify blends structured project management (inspired by HubSpot) with low-bar
 
 ## 2. Navigation & Layout
 
-### 2.1 Left-Hand Navigation
+### 2.1 Top Navigation
+
+- **Marketplace Link:** Top-left, replacing the application logo/text.
+- **Search Bar:** Centered in the top navigation bar.
+- **User Profile:** Accessed via a clickable user avatar in the top-right.
+- **Notifications:** Bell icon in the top-right with an aggregate unread count.
+
+### 2.2 Left-Hand Navigation
 
 - **Width:** 240px
-- **Items:** Dashboard, Marketplace, Pilot Projects, Innovations, Reports, Profile
+- **Items:** Dashboard, Pilot Projects, Reports
 - **States:**
   - Expanded: icon + label
   - Collapsed: icons only, expands on hover or click
 - **Badges:**
   - Display unread counts (e.g., new tasks, comments)
   - Reset upon visit or item read
-
-### 2.2 Top-Bar Notifications
-
-- **Bell Icon:** Top-right with aggregate unread count
-- **Slide-Out Panel:** Opens from right edge as overlay
-  - Groups notifications by module
-  - Click an item to navigate, “Mark all read” at footer
 
 ---
 

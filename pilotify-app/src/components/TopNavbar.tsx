@@ -1,16 +1,22 @@
 import React from 'react';
+import Link from 'next/link';
 
 const TopNavbar: React.FC = () => {
   return (
     <header className="bg-white p-4 flex items-center justify-between shadow-md">
-      <div className="text-xl font-semibold">Pilotify App</div>
+      <div className="text-xl font-semibold">
+        <Link href="/marketplace" className="hover:text-blue-600">Marketplace</Link>
+      </div>
+      <div className="flex-1 flex justify-center px-4">
+        <div className="w-full max-w-md">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="p-2 w-full rounded-md border border-gray-300"
+          />
+        </div>
+      </div>
       <div className="flex items-center">
-        {/* Search Input Placeholder */}
-        <input
-          type="text"
-          placeholder="Search..."
-          className="p-2 rounded-md border border-gray-300 mr-4"
-        />
         {/* Bell Icon with Badge */}
         <div className="relative mr-4">
           <span className="text-2xl">🔔</span>
@@ -19,9 +25,9 @@ const TopNavbar: React.FC = () => {
           </span>
         </div>
         {/* User Avatar Menu Placeholder */}
-        <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+        <Link href="/profile" className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold cursor-pointer">
           JD
-        </div>
+        </Link>
       </div>
     </header>
   );

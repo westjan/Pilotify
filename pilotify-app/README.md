@@ -1,4 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pilotify Application
+
+Pilotify is a B2B web application designed to streamline collaboration between corporate entities and innovative startups during the pilot phase of new projects.
+
+## Project Overview
+
+**For Startups:**
+Pilotify includes an AI module that transforms product information and marketing materials into best-practice formats, making them easily understandable for corporate clients. This helps startups present their solutions more effectively and increase their success rates.
+
+**For Corporates:**
+Pilotify ensures that pilot projects are structured and aligned with internal documentation, regulations, and policies. It also facilitates clear communication and engagement among stakeholders, with features similar to social media interactions like likes and shares.
+
+**Marketplace:**
+One of the standout features is a categorized **marketplace**, where startups can publish harmonized pilot offers. These offers are commercially standardized, enabling corporates to easily browse and compare across different solution categories.
+
+## Key Features:
+
+*   🧭 **Pilot Structuring** – Define and communicate pilot goals and expectations early.
+*   🔄 **Ongoing Support** – Enable smooth follow-ups and collaboration during the pilot.
+*   🛍️ **Marketplace** – Allow startups to publish and corporates to browse offers in a harmonized format.
+*   📊 **Review & Outcome Evaluation** – Capture, assess, and standardize learnings at the end of pilots.
 
 ## Getting Started
 

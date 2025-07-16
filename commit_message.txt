@@ -1,0 +1,13 @@
+🎉 feat: Project reset and core UI setup
+
+This commit represents a full reset of the Pilotify project, followed by the successful re-initialization of the Next.js application and the implementation of its core UI layout.
+
+Key changes include:
+- Complete deletion and re-creation of the `pilotify-app` directory.
+- Successful integration and verification of Tailwind CSS.
+- Implementation of the base application layout, including the left sidebar and top navigation bar.
+- Resolution of various build and runtime errors encountered during the setup process.
+- Updates to `GEMINI.md` with new operational guidelines.
+- Creation of `project_overview.md` and `DESIGN_GUIDE.md`.
+
+This establishes a stable foundation for future UI development.

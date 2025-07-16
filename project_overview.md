@@ -7,27 +7,23 @@ Pilotify is a B2B web application designed to streamline collaboration between c
 ### 1. User Management & Authentication:
 *   **User Roles:** `CORPORATE`, `INNOVATOR`, `ADMIN`.
 *   **Authentication:** Sign-up and sign-in functionalities.
-*   **User Profiles:** Users can manage their profiles.
+*   **User Profiles:** Users can manage their profiles via a user menu in the top navigation bar.
 *   **Admin Features:** Admin users can manage categories and users.
 
-### 2. Innovation Management:
-*   Startups (Innovators) can create and manage their innovations.
-*   Innovations have a `title`, `description`, `owner`, and `category`.
-
-### 3. Pilot Project Management:
+### 2. Pilot Project Management:
 *   Facilitates the creation and management of pilot projects between corporates and innovators.
 *   Pilot projects have a `title`, `description`, `corporate` and `innovator` participants, and a `status`.
+*   Includes task management within projects.
 
-### 4. Marketplace:
-*   A dedicated marketplace where startups can publish harmonized pilot offers.
-*   Corporates can browse and compare offers across different solution categories.
+### 3. Marketplace:
+*   A dedicated marketplace where startups (innovators) can publish harmonized pilot offers and showcase their innovations.
+*   Corporates can browse and compare offers and innovations across different solution categories.
 
-### 5. Communication & Collaboration:
+### 4. Communication & Collaboration:
 *   **Activities:** Tracks user activities.
 *   **Comments:** Users can add comments.
 *   **Bookmarks:** Users can bookmark items.
 *   **Reviews:** Functionality for reviewing projects or offers.
-*   **Tasks:** Task management within pilot projects.
 
 ## Database Schema (Prisma Models):
 
@@ -63,17 +59,12 @@ Pilotify is a B2B web application designed to streamline collaboration between c
 
 *   **`/` (Root):** Main application entry point.
 *   **`/admin`:** Admin-specific pages for managing categories and users.
-*   **`/api`:** Contains all API endpoints for various functionalities:
-    *   `activities`, `admin`, `admin-only`, `auth`, `bookmarks`, `categories`, `comments`, `innovations`, `offers`, `pilot-projects`, `reviews`, `tasks`, `users`.
+*   **`/api`:** Contains all API endpoints for various functionalities.
 *   **`/auth`:** Authentication-related pages (sign-in, sign-up).
 *   **`/dashboard`:** User dashboard.
-*   **`/innovations`:** Pages for managing innovations (new, view, edit).
-*   **`/landing`:** Landing page.
-*   **`/login`:** Login page.
-*   **`/marketplace`:** Marketplace pages for browsing and creating offers.
-*   **`/pilot-projects`:** Pages for managing pilot projects (new, view, edit).
-*   **`/profile`:** User profile pages (view, edit).
-*   **`/projects`:** General projects overview.
+*   **`/marketplace`:** Marketplace pages for browsing and creating offers, and viewing innovations.
+*   **`/pilot-projects`:** Pages for managing pilot projects (new, view, edit, tasks).
+*   **`/profile`:** User profile pages (view, edit), accessed from the top navigation bar.
 
 ## Components & Utilities:
 

@@ -25,11 +25,9 @@ const NavItem: React.FC<NavItemProps> = ({ href, icon, label, badge }) => {
 const LeftSidebar: React.FC = () => {
   const navItems = [
     { href: '/dashboard', icon: '📊', label: 'Dashboard', badge: 3 },
-    { href: '/marketplace', icon: '🛍️', label: 'Marketplace' },
     { href: '/pilot-projects', icon: '✈️', label: 'Pilot Projects', badge: 5 },
-    { href: '/innovations', icon: '💡', label: 'Innovations' },
+    { href: '/pilot-projects/tasks', icon: '✅', label: 'Tasks' },
     { href: '/reports', icon: '📈', label: 'Reports' },
-    { href: '/profile', icon: '👤', label: 'Profile' },
   ];
 
   return (
